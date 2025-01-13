@@ -1,6 +1,6 @@
 package com.turkcell.pair4project.controller;
 
-import com.turkcell.pair4project.entity.KeepingUserActivityLogs;
+import com.turkcell.pair4project.entity.KeepingUserActivityLog;
 import com.turkcell.pair4project.entity.Product;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -20,18 +20,18 @@ public class KeepingUserActivityLogsController {
     }
 
     @GetMapping()
-    public List<KeepingUserActivityLogs> getAll() {
+    public List<KeepingUserActivityLog> getAll() {
         return keepingUserActivityLogsService.getAll();
     }
 
     @GetMapping("{id}")
-    public KeepingUserActivityLogs getById(@PathVariable int id) {
+    public KeepingUserActivityLog getById(@PathVariable int id) {
         return keepingUserActivityLogsService.getById(id);
     }
 
     @PostMapping()
-    public KeepingUserActivityLogs add(@RequestBody @Valid KeepingUserActivityLogs keepingUserActivityLogs) {
-        return keepingUserActivityLogsService.add(keepingUserActivityLogs);
+    public KeepingUserActivityLog add(@RequestBody @Valid KeepingUserActivityLog keepingUserActivityLog) {
+        return keepingUserActivityLogsService.add(keepingUserActivityLog);
     }
 
     @DeleteMapping("{id}")

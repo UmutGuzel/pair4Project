@@ -30,7 +30,7 @@ public class Roles {
 
     @OneToMany(mappedBy = "roles")
     @JsonIgnore
-    private List<Employees> employees;
+    private List<Employee> employees;
 }
 //@Getter
 //@Setter

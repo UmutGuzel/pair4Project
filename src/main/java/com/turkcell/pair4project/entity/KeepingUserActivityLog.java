@@ -11,21 +11,18 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "employees")
-public class Employees {
+@Table(name = "keeping_user_activity_logs")
+public class KeepingUserActivityLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
+    @Column(name = "id")
     private Integer id;
 
-    @Column(name="name")
+    @Column(name = "keeping_logs_name")
     private String name;
-    @Column(name="surname")
-    private String surname;
 
-    @ManyToOne
-    @JoinColumn(name = "roles_id")
-    private Roles roles;
-    @OneToOne
-    private KeepingUserActivityLogs keeping_user_activity_logs;
+    @OneToOne(mappedBy = "keeping_user_activity_logs")
+    private Employee employee;
+
 }
+
