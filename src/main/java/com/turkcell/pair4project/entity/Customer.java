@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "customers")
-public class Customers {
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
@@ -21,4 +21,7 @@ public class Customers {
     private String telephoneNumber;
     @Column(name="email")
     private String email;
+
+    @OneToOne(mappedBy = "customers")
+    private IndividualCustomer individualCustomer;
 }

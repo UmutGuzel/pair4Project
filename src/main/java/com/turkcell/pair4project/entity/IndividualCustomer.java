@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "corporate_customer")
+@Table(name = "individual_customer")
 public class IndividualCustomer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +23,7 @@ public class IndividualCustomer {
     private String name;
     @Column(name="surname")
     private String surname;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    private Customer customers;
 }

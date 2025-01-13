@@ -1,11 +1,11 @@
 package com.turkcell.pair4project.service;
 
-import com.turkcell.pair4project.entity.KeepingUserActivityLogs;
+import com.turkcell.pair4project.entity.KeepingUserActivityLog;
 
 import java.util.List;
 
 public interface KeepingUserActivityLogsService {
-    KeepingUserActivityLogs add(KeepingUserActivityLogs keepingUserActivityLogs);
-    List<KeepingUserActivityLogs> getAll();
-    KeepingUserActivityLogs getById(int id);
+    KeepingUserActivityLog add(KeepingUserActivityLog keepingUserActivityLog);
+    List<KeepingUserActivityLog> getAll();
+    KeepingUserActivityLog getById(int id);
 }
