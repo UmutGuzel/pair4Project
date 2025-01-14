@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,4 +28,11 @@ public class Campaign {
     private Date startDate;
     @Column(name="end_date")
     private Date endDate;
+
+    @ManyToOne
+    @JoinColumn(name="customer_segmentation_id")
+    private CustomerSegmentation customerSegmentation;
+
+    @OneToMany(mappedBy = "campaign", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Product> products;
 }

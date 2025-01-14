@@ -1,5 +1,6 @@
 package com.turkcell.pair4project.entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,4 +23,7 @@ public class ProductType {
     private Integer id;
     @Column(name="name")
     private String name;
+
+    @OneToMany(mappedBy = "productType", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Product> products;
 }

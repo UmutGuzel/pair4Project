@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,7 +15,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "promotions")
-public class Promotions {
+public class Promotion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
@@ -27,4 +28,10 @@ public class Promotions {
     private Date startDate;
     @Column(name="end_date")
     private Date endDate;
+    @ManyToOne
+    @JoinColumn(name="customer_segmentation_id")
+    private CustomerSegmentation customerSegmentation;
+
+    @OneToMany(mappedBy = "promotion", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Product> products;
 }

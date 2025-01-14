@@ -25,5 +25,5 @@ public class IndividualCustomer {
     private String surname;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
-    private Customer customers;
+    private Customer customer;
 }
