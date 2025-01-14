@@ -24,4 +24,7 @@ public class Situation {
     private BigDecimal latePenalties;
     @Column(name="discount")
     private BigDecimal discount;
+
+    @OneToOne(mappedBy = "situation", cascade = CascadeType.ALL)
+    private Status status;
 }

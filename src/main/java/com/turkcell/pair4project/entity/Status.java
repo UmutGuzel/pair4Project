@@ -6,9 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-import java.sql.Date;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,4 +19,11 @@ public class Status {
     private Integer id;
     @Column(name="paid_invoice_id")
     private Integer paidInvoiceId;
+
+    @OneToOne(mappedBy = "status", cascade = CascadeType.ALL)
+    private Invoice invoice;
+
+    @OneToOne
+    @JoinColumn(name = "unpaid_invoice_id")
+    private Situation situation;
 }

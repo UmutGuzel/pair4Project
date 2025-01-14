@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 
 @Getter
@@ -26,4 +25,9 @@ public class Subscription {
     private Date endDate;
     @Column(name="payment_cycle")
     private int paymentCycle;
+
+    @ManyToOne
+    @JoinColumn(name = "invoice_id")
+    private Invoice invoice;
+
 }
