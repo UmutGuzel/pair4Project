@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,7 +16,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "invoices")
-public class Invoince {
+public class Invoice {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +27,11 @@ public class Invoince {
     private Date deadline;
     @Column(name="price")
     private BigDecimal price;
+
+    @OneToMany(mappedBy = "invoice")
+    private List<Subscription> payments;
+
+    @OneToOne
+    @JoinColumn(name = "payment_status_id")
+    private Status status;
 }
