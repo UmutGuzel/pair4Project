@@ -6,17 +6,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+import java.sql.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "segmentations")
-public class Segmentations {
+@Table(name = "situations")
+public class Situation {
     @Id
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
     private Integer id;
-    @Column(name="name")
-    private String name;
+    @Column(name="late_penalties")
+    private BigDecimal latePenalties;
+    @Column(name="discount")
+    private BigDecimal discount;
 }

@@ -14,8 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "campaigns")
-public class Campaign {
+@Table(name = "promotions")
+public class Promotion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
@@ -28,11 +28,10 @@ public class Campaign {
     private Date startDate;
     @Column(name="end_date")
     private Date endDate;
-
     @ManyToOne
     @JoinColumn(name="customer_segmentation_id")
     private CustomerSegmentation customerSegmentation;
 
-    @OneToMany(mappedBy = "campaign", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "promotion", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Product> products;
 }

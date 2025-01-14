@@ -22,6 +22,8 @@ public class Customer {
     @Column(name="email")
     private String email;
 
-    @OneToOne(mappedBy = "customers")
+    @OneToOne(mappedBy = "customer")
     private IndividualCustomer individualCustomer;
+    @OneToOne(mappedBy = "customer")
+    private CorporateCustomer corporateCustomer;
 }

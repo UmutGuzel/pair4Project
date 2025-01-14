@@ -6,33 +6,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "campaigns")
-public class Campaign {
+@Table(name = "subscriptions")
+public class Subscription {
     @Id
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
     private Integer id;
-    @Column(name="name")
-    private String name;
-    @Column(name="description")
-    private String description;
     @Column(name="start_date")
     private Date startDate;
     @Column(name="end_date")
     private Date endDate;
-
-    @ManyToOne
-    @JoinColumn(name="customer_segmentation_id")
-    private CustomerSegmentation customerSegmentation;
-
-    @OneToMany(mappedBy = "campaign", orphanRemoval = true, cascade = CascadeType.ALL)
-    private List<Product> products;
+    @Column(name="payment_cycle")
+    private int paymentCycle;
 }

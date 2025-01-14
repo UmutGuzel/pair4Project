@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 
 @Getter
@@ -13,18 +14,12 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "promotions")
-public class Promotions {
+@Table(name = "statuses")
+public class Status {
     @Id
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
     private Integer id;
-    @Column(name="name")
-    private String name;
-    @Column(name="description")
-    private String description;
-    @Column(name="start_date")
-    private Date startDate;
-    @Column(name="end_date")
-    private Date endDate;
+    @Column(name="paid_invoice_id")
+    private Integer paidInvoiceId;
 }

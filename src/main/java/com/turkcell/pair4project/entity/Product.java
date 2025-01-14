@@ -26,4 +26,13 @@ public class Product {
   @Column(name="stock")
   private Integer stock;
 
+  @ManyToOne
+  @JoinColumn(name = "promotion_id")
+  private Promotion promotion;
+  @ManyToOne
+  @JoinColumn(name = "product_type_id")
+  private ProductType productType;
+  @ManyToOne
+  @JoinColumn(name = "campaign_id")
+  private Campaign campaign;
 }
