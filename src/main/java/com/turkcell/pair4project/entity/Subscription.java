@@ -36,6 +36,9 @@ public class Subscription {
 
     @OneToMany(mappedBy = "subscription", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SubscriptionType> subscriptionTypes;
+
+    @OneToMany(mappedBy = "subscription", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Customer> customers;
 }
 
 
