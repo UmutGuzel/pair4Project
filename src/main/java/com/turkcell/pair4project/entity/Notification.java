@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,5 +22,15 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name="notification_type")
-    private Date notificationType;
+    private List<String> notificationType;
+
+    @OneToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @OneToOne(mappedBy = "notification", cascade = CascadeType.ALL)
+    private CampaignNotification campaignNotification;
+
+    @OneToOne(mappedBy = "notification", cascade = CascadeType.ALL)
+    private PromotionNotification promotionNotification;
 }
