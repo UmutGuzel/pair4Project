@@ -27,8 +27,9 @@ public class Customer
     @Column(name="email")
     private String email;
 
-    @Column(name = "subscription_id")
-    private int subscriptionId;
+    @ManyToOne
+    @JoinColumn(name = "subscription_id")
+    private Subscription subscription;
 
     @ManyToOne()
     @JoinColumn(name = "segmentation_id")
