@@ -37,5 +37,8 @@ public class Support
     @ManyToOne
     @JoinColumn(name = "request_status_type")
     private SupportRequestType supportRequestType;
+
+
+
 }
 

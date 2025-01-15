@@ -22,4 +22,13 @@ public class SubscriptionType {
     private Integer id;
     @Column(name="name")
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "subscription_id")
+    private Subscription subscription;
+
+
+    @ManyToOne
+    @JoinColumn(name = "subscription_status")
+    private SubscriptionStatus subscriptionStatus;
 }

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -30,4 +31,11 @@ public class Subscription {
     @JoinColumn(name = "invoice_id")
     private Invoice invoice;
 
+    @OneToMany(mappedBy = "subscription", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PaymentMethod> paymentMethods;
+
+    @OneToMany(mappedBy = "subscription", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SubscriptionType> subscriptionTypes;
 }
+
+
