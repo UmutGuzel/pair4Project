@@ -22,7 +22,7 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name="notification_type")
-    private List<String> notificationType;
+    private String notificationType;
 
     @OneToOne
     @JoinColumn(name = "customer_id")
