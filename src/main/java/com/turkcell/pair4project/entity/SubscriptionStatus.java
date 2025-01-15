@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,4 +23,10 @@ public class SubscriptionStatus {
     private Integer id;
     @Column(name="situation_subscription")
     private String situationSubscription;
+
+    @OneToMany(mappedBy = "subscriptionStatus", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SubscriptionType> subscriptionTypes;
+
+
+
 }

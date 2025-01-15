@@ -6,24 +6,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "statuses")
-public class Status {
+@Table(name = "situations")
+public class InvoiceSituation {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name="paid_invoice_id")
-    private Integer paidInvoiceId;
+    @Column(name="late_penalties")
+    private BigDecimal latePenalties;
+    @Column(name="discount")
+    private BigDecimal discount;
 
-    @OneToOne(mappedBy = "status", cascade = CascadeType.ALL)
-    private Invoice invoice;
-
-    @OneToOne
-    @JoinColumn(name = "unpaid_invoice_id")
-    private Situation situation;
+    @OneToOne(mappedBy = "invoiceSituation", cascade = CascadeType.ALL)
+    private InvoiceStatus invoiceStatus;
 }

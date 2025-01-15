@@ -33,5 +33,5 @@ public class Invoice {
 
     @OneToOne
     @JoinColumn(name = "payment_status_id")
-    private Status status;
+    private InvoiceStatus invoiceStatus;
 }

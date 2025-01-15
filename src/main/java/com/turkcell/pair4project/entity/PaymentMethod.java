@@ -22,4 +22,9 @@ public class PaymentMethod {
     private Integer id;
     @Column(name="name")
     private Date name;
+
+    @ManyToOne
+    @JoinColumn(name = "subscription_id")
+    private Subscription subscription;
+
 }

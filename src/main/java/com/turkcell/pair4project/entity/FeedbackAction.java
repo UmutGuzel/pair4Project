@@ -13,15 +13,20 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "product_types")
-public class ProductType {
+@Table(name = "feedback_actions")
+public class FeedbackAction
+{
     @Id
-    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    @Column(name="name")
+
+    @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "productType", orphanRemoval = true, cascade = CascadeType.ALL)
-    private List<Product> products;
+    @Column(name = "success_status")
+    private String successStatus;
+
+    @OneToMany(mappedBy = "feedbackAction", cascade = CascadeType.ALL)
+    private List<Feedback> feedbacks;
 }

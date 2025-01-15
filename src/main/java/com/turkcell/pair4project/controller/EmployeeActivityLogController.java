@@ -9,17 +9,16 @@ import com.turkcell.pair4project.service.EmployeeActivityLogService;
 import java.util.List;
 
 @RestController()
-@RequestMapping("/api/v1/keepinguseractivitylogs")
-public class KeepingUserActivityLogsController {
+@RequestMapping("/api/v1/employeeactivitylog")
+public class EmployeeActivityLogController {
 
     private final EmployeeActivityLogService employeeActivityLogService;
 
-    // DI -> Dependency Injection Pattern
-    public KeepingUserActivityLogsController(EmployeeActivityLogService employeeActivityLogService) {
+    public EmployeeActivityLogController(EmployeeActivityLogService employeeActivityLogService) {
         this.employeeActivityLogService = employeeActivityLogService;
     }
 
-    @GetMapping()
+    @GetMapping("/all")
     public List<EmployeeActivityLog> getAll() {
         return employeeActivityLogService.getAll();
     }
@@ -35,12 +34,12 @@ public class KeepingUserActivityLogsController {
     }
 
     @DeleteMapping("{id}")
-    public String delete(@PathVariable int id) {
-        return "Silindi ?? Bulunamadı";
+    public void delete(@PathVariable int id) {
+        employeeActivityLogService.delete(id);
     }
 
     @PutMapping()
-    public Product update(@RequestBody Product product) {
-        return product; // Güncelledikten sonra.
+    public EmployeeActivityLog update(@RequestBody EmployeeActivityLog employeeActivityLog) {
+        return employeeActivityLogService.update(employeeActivityLog.getId(), employeeActivityLog);
     }
 }

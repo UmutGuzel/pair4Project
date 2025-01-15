@@ -6,19 +6,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
+import java.util.List;
 
-@Getter
 @Setter
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "feedback_types")
-public class FeedbackType {
+public class FeedbackType
+{
     @Id
-    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    @Column(name="name")
+
+    @Column(name = "name")
     private String name;
+
+    @OneToMany(mappedBy = "feedbackType", cascade = CascadeType.ALL)
+    private List<Feedback> feedbacks;
 }

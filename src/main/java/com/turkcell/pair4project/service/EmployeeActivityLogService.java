@@ -8,4 +8,6 @@ public interface EmployeeActivityLogService {
     EmployeeActivityLog add(EmployeeActivityLog employeeActivityLog);
     List<EmployeeActivityLog> getAll();
     EmployeeActivityLog getById(int id);
+    void delete(int id);
+    EmployeeActivityLog update(int id, EmployeeActivityLog employeeActivityLog);
 }
