@@ -11,15 +11,19 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "corporate_customer")
-public class CorporateCustomer {
+@Table(name = "corporate_customers")
+public class CorporateCustomer
+{
     @Id
     @Column(name ="id")
     private Integer id;
-    @Column(name="text_no")
-    private String taxNo;
-    @Column(name="corporate_name")
-    private String corporateName;
+
+    @Column(name="tax_no")
+    private int taxNo;
+
+    @Column(name="name")
+    private String Name;
+
     @OneToOne(cascade = CascadeType.ALL)
     @MapsId
     @JoinColumn(name = "id")

@@ -6,17 +6,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "request_status")
-public class RequestStatus {
+@Table(name = "support_request_status")
+public class SupportRequestStatus
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
+    @Column(name = "id")
     private Integer id;
-    @Column(name="name")
+
+    @Column(name = "name")
     private String name;
+
+    @OneToMany(mappedBy = "supportRequestStatus")
+    private List<Support> support;
 }

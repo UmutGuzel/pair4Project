@@ -11,19 +11,24 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "individual_customer")
-public class IndividualCustomer {
+@Table(name = "individual_customers")
+public class IndividualCustomer
+{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
+    @Column(name = "id")
     private Integer id;
-    @Column(name="identity_no")
-    private String identityNo;
-    @Column(name="name")
+
+    @Column(name = "identity_no")
+    private int identityNo;
+
+    @Column(name = "name")
     private String name;
-    @Column(name="surname")
+
+    @Column(name = "surname")
     private String surname;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id")
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "id")
     private Customer customer;
 }

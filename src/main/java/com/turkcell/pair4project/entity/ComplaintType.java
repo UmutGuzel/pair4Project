@@ -6,18 +6,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
+import java.util.List;
+
 @Setter
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "supports")
-public class Supports {
+@Table(name = "complaint_types")
+public class ComplaintType
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
+    @Column(name = "id")
     private Integer id;
-    @Column(name="description")
-    private String description;
-}
 
+    @Column(name = "name")
+    private String name;
+
+    @OneToMany(mappedBy = "complaintType", cascade = CascadeType.ALL)
+    private List<Complaint> complaints;
+}
