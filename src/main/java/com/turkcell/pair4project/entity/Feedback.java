@@ -6,19 +6,35 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
-@Getter
 @Setter
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "feedbacks")
-public class Feedback {
+public class Feedback
+{
     @Id
-    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    @Column(name="description")
+
+    @Column(name = "description")
     private String description;
+
+    @ManyToOne()
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @ManyToOne()
+    @JoinColumn(name = "action_id")
+    private FeedbackAction feedbackAction;
+
+    @ManyToOne()
+    @JoinColumn(name = "status_tracking_id")
+    private FeedbackStatusTracking feedbackStatusTracking;
+
+    @ManyToOne()
+    @JoinColumn(name = "type_id")
+    private FeedbackType feedbackType;
 }

@@ -44,7 +44,7 @@ public class Customer
     private List<CustomerAddress> customerAdresses;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Complaint> complaints;
+    private List<Feedback> feedbacks;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Support> support;

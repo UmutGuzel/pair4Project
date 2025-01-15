@@ -28,4 +28,21 @@ public class EmployeeActivityLogServiceImpl implements EmployeeActivityLogServic
     public EmployeeActivityLog getById(int id) {
         return employeeActivityLogRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public void delete(int id) {
+        employeeActivityLogRepository.deleteById(id);
+    }
+
+    @Override
+    public EmployeeActivityLog update(int id, EmployeeActivityLog employeeActivityLog) {
+        EmployeeActivityLog employeeActivityLogToUpdate = employeeActivityLogRepository.findById(id).orElse(null);
+        if (employeeActivityLogToUpdate == null) {
+            return null;
+        }
+        employeeActivityLogToUpdate.setEmployee(employeeActivityLog.getEmployee());
+        employeeActivityLogToUpdate.setName(employeeActivityLog.getName());
+        employeeActivityLogRepository.save(employeeActivityLogToUpdate);
+        return employeeActivityLogToUpdate;
+    }
 }

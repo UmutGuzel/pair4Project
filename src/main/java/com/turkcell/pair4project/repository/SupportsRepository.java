@@ -1,7 +1,7 @@
 package com.turkcell.pair4project.repository;
 
-import com.turkcell.pair4project.entity.Supports;
+import com.turkcell.pair4project.entity.Support;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SupportsRepository extends JpaRepository<Supports, Integer> {
+public interface SupportsRepository extends JpaRepository<Support, Integer> {
 }

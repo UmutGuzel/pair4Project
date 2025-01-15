@@ -36,7 +36,7 @@ public class CustomerRepresentative
     private EmployeeRole employeeRole;
 
     @OneToMany(mappedBy = "customerRepresentative", cascade = CascadeType.ALL)
-    private List<ComplaintStatusTracking> complaintStatusTracking;
+    private List<FeedbackStatusTracking> feedbackStatusTracking;
 
     @OneToMany(mappedBy = "customerRepresentative", cascade = CascadeType.ALL)
     private List<Report> reports;

@@ -13,8 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "complaint_status_tracking")
-public class ComplaintStatusTracking
+@Table(name = "feedback_status_tracking")
+public class FeedbackStatusTracking
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +28,6 @@ public class ComplaintStatusTracking
     @JoinColumn(name = "customer_representative_id")
     private CustomerRepresentative customerRepresentative;
 
-    @OneToMany(mappedBy = "complaintStatusTracking", cascade = CascadeType.ALL)
-    private List<Complaint> complaints;
+    @OneToMany(mappedBy = "feedbackStatusTracking", cascade = CascadeType.ALL)
+    private List<Feedback> feedbacks;
 }
