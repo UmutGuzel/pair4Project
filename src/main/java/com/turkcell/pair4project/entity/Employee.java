@@ -12,7 +12,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "employees")
-public class Employee {
+public class Employee
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
@@ -20,13 +21,15 @@ public class Employee {
 
     @Column(name="name")
     private String name;
+
     @Column(name="surname")
     private String surname;
 
     @ManyToOne
     @JoinColumn(name = "roles_id")
-    private Roles roles;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_activity_logs_id")
-    private KeepingUserActivityLog keeping_user_activity_logs;
+    private EmployeeRole employeeRole;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "employee_activity_log_id")
+    private EmployeeActivityLog employeeActivityLog;
 }

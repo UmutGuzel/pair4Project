@@ -6,21 +6,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "actions")
-public class Action {
+@Table(name = "complaint_actions")
+public class ComplaintAction
+{
     @Id
-    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    @Column(name="name")
+
+    @Column(name = "name")
     private String name;
-    @Column(name="success_status")
+
+    @Column(name = "success_status")
     private String successStatus;
+
+    @OneToMany(mappedBy = "complaintAction", cascade = CascadeType.ALL)
+    private List<Complaint> complaints;
 }

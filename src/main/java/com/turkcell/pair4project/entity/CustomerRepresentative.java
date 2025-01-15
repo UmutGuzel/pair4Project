@@ -15,17 +15,32 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "customer_representatives")
-public class CustomerRepresentative {
+public class CustomerRepresentative
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
     private Integer id;
-    @Column(name="representative_name")
+
+    @Column(name = "name")
     private String name;
-    @Column(name="representative_surname")
+
+    @Column(name = "surname")
     private String surname;
-    @Column(name="position")
+
+    @Column(name = "position")
     private String position;
-    @OneToMany(mappedBy = "customerRepresentative")
-    private List<Reports> reports;
+
+    @ManyToOne()
+    @JoinColumn(name = "roles_id")
+    private EmployeeRole employeeRole;
+
+    @OneToMany(mappedBy = "customerRepresentative", cascade = CascadeType.ALL)
+    private List<ComplaintStatusTracking> complaintStatusTracking;
+
+    @OneToMany(mappedBy = "customerRepresentative", cascade = CascadeType.ALL)
+    private List<Report> reports;
+
+    @OneToMany(mappedBy = "customerRepresentative", cascade = CascadeType.ALL)
+    private List<Support> support;
 }

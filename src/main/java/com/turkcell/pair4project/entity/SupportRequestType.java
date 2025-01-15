@@ -6,19 +6,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "status_trackings")
-public class StatusTracking {
+@Table(name = "support_request_type")
+public class SupportRequestType
+{
     @Id
-    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    @Column(name="success_stats_tracking")
-    private String successStatsTracking;
+
+    @Column(name = "name")
+    private String name;
+
+    @OneToMany(mappedBy = "supportRequestType")
+    private List<Support> support;
 }
