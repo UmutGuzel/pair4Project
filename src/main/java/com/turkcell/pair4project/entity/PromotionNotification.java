@@ -23,7 +23,7 @@ public class PromotionNotification {
     @JoinColumn(name="promotions_id")
     private Promotion promotion;
 
-    @ManyToOne
+    @OneToOne
     @MapsId
     @JoinColumn(name = "id")
     private Notification notification;
